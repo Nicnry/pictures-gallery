@@ -38,8 +38,9 @@ class PictureController extends Controller
     {
         $picture = new Picture($request->all());
         $picture->gallery_id = $request->gallery;
+        $picture->path = $request->path->store('pictures', 'local');
         $picture->save();
-        return view('pictures.create');
+        return redirect()->route('galleries.show', request()->route('gallery'));
     }
 
     /**

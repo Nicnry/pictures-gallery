@@ -5,7 +5,7 @@
 <ul>
     @foreach ($pictures as $picture)
         <li>{{$picture->title}}</li>
-        <li>{{$picture->path}}</li>
+        <li><img src="{{$picture->path}}" alt=""></li>
     @endforeach
 </ul>
 @endsection

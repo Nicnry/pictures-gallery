@@ -8,6 +8,5 @@ class Picture extends Model
 {
     protected $fillable = [
         'title',
-        'path',
     ];
 }
