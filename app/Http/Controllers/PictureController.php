@@ -14,7 +14,8 @@ class PictureController extends Controller
      */
     public function index()
     {
-        //
+        $pictures = Picture::all();
+        return view('pictures.show')->with(compact('pictures'));
     }
 
     /**
@@ -24,7 +25,7 @@ class PictureController extends Controller
      */
     public function create()
     {
-        //
+        return view('pictures.create');
     }
 
     /**
@@ -35,7 +36,10 @@ class PictureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $picture = new Picture($request->all());
+        $picture->gallery_id = $request->gallery;
+        $picture->save();
+        return view('pictures.create');
     }
 
     /**
