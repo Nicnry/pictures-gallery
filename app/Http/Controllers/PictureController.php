@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Picture;
 use Illuminate\Http\Request;
+use App\Gallery;
 
 class PictureController extends Controller
 {
@@ -23,9 +24,9 @@ class PictureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Gallery $gallery)
     {
-        return view('pictures.create');
+        return view('pictures.create')->with(compact('gallery'));
     }
 
     /**
@@ -34,13 +35,13 @@ class PictureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Gallery $gallery, Request $request)
     {
         $picture = new Picture($request->all());
-        $picture->gallery_id = $request->gallery;
+        $picture->gallery_id = $gallery->id;
         $picture->path = $request->path->store('pictures', 'local');
         $picture->save();
-        return redirect()->route('galleries.show', request()->route('gallery'));
+        return redirect()->route('galleries.show', $gallery);
     }
 
     /**
