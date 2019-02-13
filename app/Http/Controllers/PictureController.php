@@ -15,7 +15,6 @@ class PictureController extends Controller
      */
     public function index(Gallery $gallery)
     {
-        /* $pictures = Picture::all(); */
         return redirect()->route('galleries.show', $gallery);
     }
 

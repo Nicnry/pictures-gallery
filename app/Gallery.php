@@ -13,4 +13,8 @@ class Gallery extends Model
     public function author() {
         return $this->belongsTo('App\User', 'author_id');
     }
+
+    public function pictures() {
+        return $this->hasMany('App\Picture');
+    }
 }
