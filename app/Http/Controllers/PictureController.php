@@ -13,10 +13,10 @@ class PictureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Gallery $gallery)
     {
-        $pictures = Picture::all();
-        return view('pictures.show')->with(compact('pictures'));
+        /* $pictures = Picture::all(); */
+        return redirect()->route('galleries.show', $gallery);
     }
 
     /**
