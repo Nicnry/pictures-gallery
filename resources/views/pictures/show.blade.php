@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Pictures</h1>
+<h1>Gallery : {{$picture->title}}</h1>
+<p>Publiée par : {{$gallery->author}}</p>
 <ul>
-    @foreach ($pictures as $picture)
-        <li>{{$picture->title}}</li>
-        <li><img src="{{$picture->path}}" alt=""></li>
-    @endforeach
+    <li>
+        <img src="{{route('galleries.pictures.show', compact('gallery','picture'))}}">
+    </li>
 </ul>
 @endsection
