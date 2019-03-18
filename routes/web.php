@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('galleries', 'GalleryController')->except([
+    'edit', 'update', 'destroy'
+]);
+Route::resource('galleries.pictures', 'PictureController')->except([
+    'edit', 'update', 'destroy'
+]);
