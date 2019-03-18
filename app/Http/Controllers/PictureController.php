@@ -8,6 +8,7 @@ use App\Gallery;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Kfirba\Directo\Support\Facades\Directo;
 
 class PictureController extends Controller
 {
@@ -18,6 +19,7 @@ class PictureController extends Controller
      */
     public function index(Gallery $gallery)
     {
+        
         return redirect()->route('galleries.show', $gallery);
     }
 
@@ -28,6 +30,9 @@ class PictureController extends Controller
      */
     public function create(Gallery $gallery)
     {
+        $directo = new Directo(env('AWS_BUCKET'), env('AWS_DEFAULT_REGION'), env('AWS_ACCESS_KEY_ID'), env('AWS_SECRET_ACCESS_KEY'), [
+            'acl' => 'private',
+        ]);
         return view('pictures.create')->with(compact('gallery'));
     }
 
@@ -41,7 +46,6 @@ class PictureController extends Controller
     {
         $picture = new Picture($request->all());
         $picture->gallery_id = $gallery->id;
-        $picture->path = $request->path->store('pictures', 's3');
         $picture->save();
         return redirect()->route('galleries.show', $gallery);
     }
@@ -56,7 +60,7 @@ class PictureController extends Controller
     {
         if (Str::startsWith($request->header('accept'), 'image')) {
             /* return redirect()->file(Storage::disk('s3')->getAdapter()->getPathPrefix() . $picture->path); */
-            return redirect(Storage::disk('s3')->temporaryUrl( $picture->path, Carbon::now()->addMinutes(1) ));
+            return redirect(Storage::disk('s3')->temporaryUrl( $picture->path, Carbon::now()->addSeconds(2) ));
         } else {
             return view('pictures.show', compact('gallery', 'picture'));
         }

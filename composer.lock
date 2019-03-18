@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6d26faaa3494bc720180afb87d0fe48",
+    "content-hash": "0cace9aa87e5153e39ac8393be9d5611",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -718,6 +718,56 @@
             ],
             "description": "Highlight PHP code in terminal",
             "time": "2018-09-29T18:48:56+00:00"
+        },
+        {
+            "name": "kfirba/directo",
+            "version": "v0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kfirba/Directo.git",
+                "reference": "fa9b38295d5b5a354719ba22bbb2c4bcdcad715a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kfirba/Directo/zipball/fa9b38295d5b5a354719ba22bbb2c4bcdcad715a",
+                "reference": "fa9b38295d5b5a354719ba22bbb2c4bcdcad715a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.5",
+                "php": ">=7.1.0",
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kfirba\\Directo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kfir Ben-Ami",
+                    "email": "kfirba2@gmail.com"
+                }
+            ],
+            "description": "A library to generate signatures for direct upload to Amazon S3",
+            "keywords": [
+                "AWS Signature V4",
+                "S3 direct upload",
+                "S3 policy",
+                "S3 signature",
+                "amazon S3 upload",
+                "signature",
+                "upload to S3"
+            ],
+            "time": "2018-03-16T15:30:57+00:00"
         },
         {
             "name": "laravel/framework",
