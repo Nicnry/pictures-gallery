@@ -5,7 +5,6 @@
 <ul>
     @foreach ($galleries as $gallery)
         <li><a href="{{route('galleries.pictures.show', $gallery->id)}}">{{$gallery->name}}</a></li>
-        tutu<img src="{{route('galleries.pictures.show', compact('gallery','picture'))}}">
     @endforeach
 </ul>
 @endsection
