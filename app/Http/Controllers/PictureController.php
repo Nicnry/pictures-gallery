@@ -60,7 +60,7 @@ class PictureController extends Controller
     {
         if (Str::startsWith($request->header('accept'), 'image')) {
             /* return redirect()->file(Storage::disk('s3')->getAdapter()->getPathPrefix() . $picture->path); */
-            return redirect(Storage::disk('s3')->temporaryUrl( $picture->path, Carbon::now()->addSeconds(2) ));
+            return redirect(Storage::disk('s3')->temporaryUrl( $picture->path, Carbon::now()->addSeconds(10) ));
         } else {
             return view('pictures.show', compact('gallery', 'picture'));
         }
